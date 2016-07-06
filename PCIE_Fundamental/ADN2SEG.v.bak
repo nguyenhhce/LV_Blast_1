@@ -1,0 +1,10 @@
+module ADN2SEG(output [6:0] hex, input [2:0] indata);
+parameter   A_ADN = 3'b001,
+				G_ADN = 3'b010,
+				T_ADN = 3'b011,
+				C_ADN = 3'b100;
+   assign hex = (indata == A_ADN) ? 7'b0001001 : 
+	             (indata == G_ADN) ? 7'b0100000 :
+					 (indata == T_ADN) ? 7'b0001111 : 
+				    (indata == C_ADN) ? 7'b0110001 : 7'b1111110 	;
+endmodule 

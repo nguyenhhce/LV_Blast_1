@@ -1,0 +1,102 @@
+`timescale 1ns / 1ps
+module memory_tb ;
+
+  wire  [ 63: 0] readdata;
+  wire  [ 63: 0] readdata2;
+  reg   [ 13: 0] address;
+  reg   [ 13: 0] address2;
+  reg   [  7: 0] byteenable;
+  reg   [  7: 0] byteenable2;
+  reg            chipselect;
+  reg            chipselect2;
+  reg            clk;
+  reg            clk2;
+  reg            clken;
+  reg            clken2;
+  reg            reset;
+  reg            reset2;
+  reg            reset_req;
+  reg            reset_req2;
+  reg            write;
+  reg            write2;
+  reg   [ 63: 0] writedata;
+  reg   [ 63: 0] writedata2;
+
+
+de2i_150_qsys_onchip_memory UUT1(
+    .address(address),
+    .address2(address2),
+    .byteenable(byteenable),
+    .byteenable2(byteenable2),
+    .chipselect(chipselect),
+    .chipselect2(chipselect2),
+    .clk(clk),
+    .clk2(clk2),
+    .clken(clken),
+    .clken2(clken2),
+    .reset(reset),
+    .reset2(reset2),
+    .reset_req(reset_req),
+    .reset_req2(reset_req2),
+    .write(write),
+    .write2(write2),
+    .writedata(writedata),
+    .writedata2(writedata2),
+
+    .readdata(readdata),
+    .readdata2(readdata2)
+);
+ 
+    initial begin
+		address= 0;
+		address2= 0;
+		byteenable= -1;
+		byteenable2= -1;
+		chipselect= 1;
+		chipselect2= 1;
+		clk= 0;
+		clk2= 0;
+		clken= 1;
+		clken2= 1;
+		reset= 0;
+		reset2= 0;
+		reset_req= 0;
+		reset_req2= 0;
+		write= 0;
+		write2= 0;
+		writedata= 0;
+		writedata2= 0;
+	 end
+	 
+    always   begin
+	    #5 clk  = ~clk;
+		 #5 clk2 = ~clk2;
+	 end
+	 
+	 always @(posedge clk2) begin
+	    address2 <= address;
+	 end
+	 
+	 initial begin
+    reset = 1;
+#15
+    reset = 0; 
+	 writedata = 64'haaBBCCDD;
+	 address   = 5;
+	 write     = 1;
+#10
+    write     = 0;
+	 writedata = 64'h01020304;
+	 address   = 10;
+#10
+    write     = 64'hCAFEDEAD;
+	 write     = 1;
+#10
+    write     = 0;
+    writedata = 64'h05060708;
+	 address   = 15;	 
+#400000
+	 $finish;
+	 end
+	 
+endmodule 

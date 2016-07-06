@@ -1,0 +1,349 @@
+module Blast_top 
+#(
+    parameter DATABASE_BLOCK_SIZE       = (127*1024/8),
+    parameter MEM_QUERY_ADDR            = 0,
+    parameter MEM_SUBJECT_ADDR          = 12,
+    parameter MEM_HIT_SCORE_ADDR        = (MEM_SUBJECT_ADDR + DATABASE_BLOCK_SIZE),
+	 parameter MEM_SIZE                  = -1,
+    parameter MEMORY_DATAWIDTH          = 64,
+    parameter MEMORY_ADDRESS            = 14,
+    parameter LENGTH_CHAR               = 3,
+    parameter LENGTH_COUNTER            = 8
+)
+(
+// port 2 memory interface
+    output wire [13:0] memory_address,       
+    output reg         memory_write,         
+    input  wire [63:0] memory_readdata,      
+    output reg  [63:0] memory_writedata,            
+    output wire [7:0]  memory_byteenable,           
+    output wire        memory_chipselect,           
+    output wire        memory_clken,
+
+// clock, resset
+    input clk,
+    input reset,
+
+    input       memory_ready,
+    input       app_ready,
+    input [7:0] app_code,
+
+    output reg                      query_enable,
+    output reg [LENGTH_CHAR-1:0]    query_datastream_in,
+    output reg                      subject_enable,
+    output reg [LENGTH_CHAR-1:0]    subject_datastream_in,
+
+    input  [LENGTH_COUNTER-1:0] hit_add_inQ_UnGap,
+    input  [LENGTH_COUNTER-1:0] hit_add_inS_UnGap,
+    input  [LENGTH_COUNTER-1:0] hit_length_UnGap,
+    input  [LENGTH_COUNTER-1:0] hit_add_score,
+		  
+		  //Debuging
+    output reg [6*MEMORY_DATAWIDTH -1: 0] query_data_debug,
+    output reg [6*MEMORY_DATAWIDTH -1: 0] subject_data_debug,
+	 output reg [MEMORY_DATAWIDTH/2 -1: 0] subject_length,
+    output reg [MEMORY_DATAWIDTH/2 -1: 0] subject_ID,
+	 output reg [1:0]                      memory_SEG,
+    output reg [2:0]                      state,
+    output reg [2:0]                      next_state,
+	 output wire [13:0]                    memory_address_Q, 
+	 output wire [13:0]                    memory_address_S, 
+	 output wire [13:0]                    memory_address_H,
+	 output wire                           write_LCD
+  );
+
+    assign write_LCD = read_query | read_subject ;
+    wire                            found_hit_score;
+
+    reg  [MEMORY_ADDRESS-1:0]       query_address;
+    reg  [MEMORY_ADDRESS-1:0]       subject_address;
+    reg  [MEMORY_ADDRESS-1:0]       hit_score_address;
+    reg  [2:0]                      read_query_count;
+    reg  [2:0]                      read_subject_count;
+    reg                             first_read_subject;
+
+    reg                             read_query_done;
+    reg                             read_subject_done;
+    wire                            write_hit_score_done;
+    reg                             write_hit_score_header_done;
+    wire                            finished;
+
+    parameter  QUERY_AREA     = 2'b01;
+    parameter  SUBJECT_AREA   = 2'b10;
+    parameter  HIT_SCORE_AREA = 2'b11;
+   
+    //reg [1:0]                      memory_SEG;
+
+    assign mm_interconnect_2_memory_clken = 1'b1;
+    assign found_hit_score = |{|hit_add_inQ_UnGap, |hit_add_inS_UnGap, |hit_length_UnGap, |hit_add_score};
+    assign memory_address  = (read_query) ? query_address : 
+                             (read_subject) ? subject_address :
+                             (write_hit_score | write_hit_score_header) ? hit_score_address : memory_address ;
+
+	 assign      memory_address_Q = query_address; 
+	 assign      memory_address_S = subject_address; 
+	 assign      memory_address_H = hit_score_address;
+
+
+   assign memory_clken      = 1'b1;
+   assign memory_chipselect = 1'b1;
+   assign memory_byteenable = 8'HFF;
+// state machine
+//   reg [2:0] state;
+//   reg [2:0] next_state;
+   parameter IDLE                 = 3'b000;
+   parameter READ_QUERY           = 3'b001;
+   parameter READ_SUBJECT         = 3'b010;
+   parameter WRITE_HIT_SCORE      = 3'b011;
+   parameter FINISHED             = 3'b100;
+
+   parameter READ_QUERY_CODE      = 8'HAA;
+   parameter READ_SUBJECT_CODE    = 8'HBB;
+   parameter FINISHED_CODE        = 8'HEE;
+
+
+   reg read_query     ;
+   reg read_subject   ;
+   reg write_hit_score;
+   reg write_hit_score_header;
+   reg idle ;  
+
+    reg [7:0] push_query_count;
+    reg [7:0] push_subject_count;
+
+   always @(posedge clk)
+   begin
+      if(reset) state <= IDLE;
+      else state <= next_state;
+   end
+
+   always @(*)
+   begin
+      next_state       = state;
+      read_query       = 1'b0;
+      read_subject     = 1'b0;
+      write_hit_score  = 1'b0;
+      write_hit_score_header = 1'b0;
+      idle             = 1'b0;
+
+      case(state)
+         IDLE: begin
+            if(app_ready) begin
+               if( app_code == READ_QUERY_CODE) begin
+                  next_state = READ_QUERY;
+               end
+               else if(app_code == READ_SUBJECT_CODE) begin
+                  next_state = READ_SUBJECT;
+               end 
+            end
+            idle               = 1'b1;
+         end
+         READ_QUERY: begin
+            if(read_query_done) begin
+               next_state = IDLE;
+            end
+               read_query = 1'b1;
+         end
+         READ_SUBJECT: begin
+            if(finished) begin
+               next_state = FINISHED;
+            end
+            if(read_subject_done) begin
+               next_state = WRITE_HIT_SCORE;
+            end
+            read_subject = 1'b1;
+         end
+         WRITE_HIT_SCORE: begin
+            if(finished) begin
+               next_state = FINISHED;
+            end
+            else if(write_hit_score_done) begin
+               next_state = READ_SUBJECT;
+            end
+            write_hit_score = 1'b1;
+         end
+         FINISHED: begin
+            if(write_hit_score_header_done) begin
+               next_state = IDLE;
+            end
+            write_hit_score_header = 1'b1;
+         end
+      endcase
+   end
+
+
+//   reg first_read_query;
+
+   reg [6*MEMORY_DATAWIDTH -1: 0] query_data;
+   reg [6*MEMORY_DATAWIDTH -1: 0] subject_data;
+//   reg [MEMORY_DATAWIDTH/2 -1: 0] subject_length;
+   reg [MEMORY_DATAWIDTH/2 -1: 0] read_subject_total;
+//   reg [MEMORY_DATAWIDTH/2 -1: 0] subject_ID;
+   reg [MEMORY_DATAWIDTH/2 -1: 0] hit_score_length;
+
+
+
+   always @(posedge clk) begin
+
+//read query
+      if(read_query) begin
+         query_data[5*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= memory_readdata;
+         query_data[4*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= query_data[5*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+         query_data[3*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= query_data[4*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];         query_data[1*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= query_data[2*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+         query_data[2*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= query_data[3*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+         query_data[1*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= query_data[2*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+         query_data[0*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= query_data[1*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+         push_query_count                                   <= 7'b0;
+			
+			//Binh added for debuging
+         query_data_debug[5*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= memory_readdata;
+         query_data_debug[4*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= query_data_debug[5*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+         query_data_debug[3*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= query_data_debug[4*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];         query_data[1*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= query_data[2*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+         query_data_debug[2*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= query_data_debug[3*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+         query_data_debug[1*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= query_data_debug[2*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+         query_data_debug[0*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= query_data_debug[1*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+		end
+      else begin
+         if(push_query_count  < 7'd127) begin
+           query_datastream_in  <= query_data[2:0];
+            query_enable        <= 1'b1;
+            push_query_count    <= push_query_count + 1'b1;
+            query_data          <= query_data >> 3;
+         end
+         else begin
+            query_enable        <= 1'b0;
+         end
+
+      end 
+
+//read subject
+      if(read_subject) begin
+         if(first_read_subject) begin
+            if(read_subject_count == 0) begin
+                { subject_length, subject_ID}                        <= memory_readdata;
+            end
+				else begin
+					subject_data[5*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= memory_readdata;
+					subject_data[4*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data[5*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+					subject_data[3*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data[4*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+					subject_data[2*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data[3*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+					subject_data[1*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data[2*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+					subject_data[0*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data[1*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+					
+					subject_data_debug[5*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= memory_readdata;
+					subject_data_debug[4*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data_debug[5*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+					subject_data_debug[3*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data_debug[4*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+					subject_data_debug[2*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data_debug[3*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+					subject_data_debug[1*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data_debug[2*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+					subject_data_debug[0*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data_debug[1*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+				end
+         end
+			else begin
+				subject_data[5*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= memory_readdata;
+				subject_data[4*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data[5*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+				subject_data[3*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data[4*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+				subject_data_debug[5*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= memory_readdata;
+				subject_data_debug[4*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data_debug[5*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+				subject_data_debug[3*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= subject_data_debug[4*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH];
+			end
+         push_subject_count                                      <= 7'b0;
+      end
+      else begin
+         if(push_subject_count < 7'd64) begin
+            subject_datastream_in <= subject_data[2:0];
+            subject_enable        <= 1'b1;
+            push_subject_count    <= push_subject_count + 1'b1;
+            subject_data          <= subject_data >> 3;
+         end
+         else begin
+            subject_enable        <= 1'b0;
+         end
+      end 
+
+   end
+///   reg first_write_hit_score;
+//changing state of write_hit_score to read_subject after 64 clock
+   assign write_hit_score_done = ~|subject_data[6*MEMORY_DATAWIDTH-1:3*MEMORY_DATAWIDTH];
+   assign finished             = write_hit_score_done && (read_subject_total >= subject_length && read_subject_total>4'd8);
+
+    always @(posedge clk) begin
+      if(reset ) begin 
+         memory_write       <= 1'b0;
+         first_read_subject <= 1'b1;
+         query_address      <= MEM_QUERY_ADDR;
+         subject_address    <= MEM_SUBJECT_ADDR ;
+         hit_score_address  <= MEM_HIT_SCORE_ADDR;
+         read_subject_total <= 0;
+         read_query_count   <= 3'b0;
+         read_subject_count <= 2'b0;
+      end
+      else if(idle) begin
+         write_hit_score_header_done <= 1'b0;
+         memory_write                <= 1'b0;
+         read_query_done             <= 1'b0;
+         read_subject_done           <= 1'b0;
+         read_query_count            <= 2'b0;
+         read_subject_count          <= 3'b0;
+			query_address               <= MEM_QUERY_ADDR;
+      end
+		
+      else if(read_query) begin
+         read_query_count            <= read_query_count + 1'b1;
+         if(read_query_count == 3'h5) begin
+           read_query_done           <= 1'b1;
+         end
+         else begin
+         end
+//         memory_SEG                  <= QUERY_AREA;
+         query_address               <= query_address + 1'b1;
+      end
+		
+      else if(read_subject) begin
+         if(first_read_subject)begin
+             if(read_subject_count == 3'd6) begin
+                read_subject_done    <= 1'b1;
+                first_read_subject   <= 1'b0;
+             end
+             else begin
+                read_subject_total  <= read_subject_total + 4'd8;
+             end
+         end
+         else begin
+            if(read_subject_count == 3'd2) begin
+               read_subject_done     <= 1'b1;
+            end
+            read_subject_total        <= read_subject_total + 4'd8;
+         end
+         read_subject_count           <= read_subject_count + 1'b1;
+//         memory_SEG                   <= SUBJECT_AREA;
+			subject_address              <= subject_address + 1'b1;
+      end
+		
+      else if(write_hit_score) begin
+		   read_subject_count           <= 3'b0;
+         read_subject_done            <= 1'b0;
+         memory_write                 <= 1'b1;
+//         memory_SEG                   <= HIT_SCORE_AREA;
+			hit_score_address            <= hit_score_address + 1'b1;
+			if(hit_score_address == MEM_SIZE - 1) begin
+			   hit_score_address         <= MEM_HIT_SCORE_ADDR + 1;
+			end
+         if(found_hit_score) begin
+            hit_score_length         <= hit_score_length + 4'd8;
+            memory_writedata         <= {hit_add_inQ_UnGap, hit_add_inS_UnGap, hit_length_UnGap, hit_add_score};
+         end
+      end    
+		
+      else if(write_hit_score_header) begin
+         write_hit_score_header_done <= 1'b1;
+         memory_write                <= 1'b1;
+//         memory_SEG                  <= HIT_SCORE_AREA;
+			hit_score_address           <= MEM_HIT_SCORE_ADDR;
+         memory_writedata            <= {subject_ID, hit_score_length};
+         hit_score_length            <= 0;
+         first_read_subject          <= 1'b1;
+      end
+   end
+
+endmodule 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
