@@ -1,0 +1,123 @@
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+//Binh added to filter unnecessary files
+*.bsf
+*.cmp
+*.html
+*.sopcinfo
+*.asm
+*.rpt
+*.cdf
+*.done
+*.eda
+*.fit
+*.smsg
+*.summary
+*.flow
+*.jdi
+*.map
+*.pin
+*.qws
+*.sta
+*.qdf
+*.txt
+*.xml
+*.nlv
+*.db_info
+*.sld_design_entry
+*.sci
+*.debuginfo
+*.regmap
+*.autoh_e40e1
+*.ammdb
+*.cdb
+*.dfp
+*.hdb
+*.logdb
+*.rcfdb
+*.dpi
+*.kpt
+*.root_partition
+*.hbdb
+*.hb_info
+*.sig
+*.rrp
+*.qws
+*.tdf
+*.qmsg
+*.rdb
+*.idb
+*.hier_info
+*.hif
+*.dat
+*.bpm
+*.ddb
+*.flock
+*.hsd
+*.ammdb
+*.cdb
+*.tdb
+*.qip
+*.cdb
+*.cdb
+*.cdb
+*.hdb
+*.cdb
+*.cdb
+*.kpt
+*.hdb
+*.vho
+*.sdo
+*.hdb
+*.ammdb
+*.cdb
+*.hdb
+*.rcfdb
+*.cdb
+*.sv
