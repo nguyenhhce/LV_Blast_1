@@ -64,7 +64,9 @@ wire fifo_Sum_empty, fifo_Sum_full;
 wire [LENGTH_COUNTER-1 :0] fifo_Sum_counter;
 //output wire [LENGTH_CHAR*LENGTH-1:0] query_debug,subject_debug;
 //wire [LENGTH-1 :0] match_holder_1;
+wire [LENGTH_COUNTER-1:0] hit_add_inQ_out_add_num;
 
+assign hit_add_inQ_out_add_num = (NUMBER_ARRAY-1-offset)*LENGTH;
 
 // Multi hits detection
 systoic_array systoic_U(query_datastream_in, query_datastream_out, sub_datastream_in, sub_datastream_out, 
@@ -78,7 +80,7 @@ Hit_Info_Extrac Hit_Info_Extrac_U(array_clk,offset,query_enable, sub_enable,hits
 Hit_To_FIFO Hit_To_FIFO(array_clk, hit_add_inQ, hit_add_inS, hit_length, enable_Hit_Extrac_1, hit_add_inQ_out,hit_add_inS_out, hit_length_out, reset);
 
 // Summary fifo which store all Hits
-Fifo_B fifo_Sum(array_clk, reset, hit_add_inS_out, hit_add_inQ_out+(NUMBER_ARRAY-1-offset)*LENGTH, hit_length_out, hit_add_inS_UnGap, hit_add_inQ_UnGap, hit_length_UnGap,
+Fifo_B fifo_Sum(array_clk, reset, hit_add_inS_out, hit_add_inQ_out+hit_add_inQ_out_add_num, hit_length_out, hit_add_inS_UnGap, hit_add_inQ_UnGap, hit_length_UnGap,
 			fifo_Sum_wr, read_HSP, fifo_Sum_empty, fifo_Sum_full, fifo_Sum_counter );
 
 //Fifo_B fifo_Sum(array_clk, reset, hit_add_inS_out, hit_add_inQ_out+(NUMBER_ARRAY-1-offset)*LENGTH, hit_length_out, hit_add_inS_UnGap, hit_add_inQ_UnGap, hit_length_UnGap,
@@ -88,12 +90,12 @@ Fifo_B fifo_Sum(array_clk, reset, hit_add_inS_out, hit_add_inQ_out+(NUMBER_ARRAY
 //Ungapped_Extension UnGap(array_clk,reset, read_HSP, Q_address_F, S_address_F, Q_context_F, S_context_F,
 //								Q_address_R, S_address_R, Q_context_R, S_context_R,
 //								hit_add_inQ_HSP,hit_add_inS_HSP, hit_length_HSP, hit_add_inQ_UnGap,hit_add_inS_UnGap, hit_length_UnGap,hit_add_score);
-always @(posedge array_clk) 
-		if (hit_length_out!=0)
-			begin
-				$display("NO.: ", offset, ". Hit in Query: ", hit_add_inQ_out+(NUMBER_ARRAY-1-offset)*LENGTH, ". Hit in Subject: ",hit_add_inS_out, ". Length of Hit", hit_length_out + 1);
-				//num_HSP_out = num_HSP_out + 1;
-			end
+//always @(posedge array_clk) 
+//		if (hit_length_out!=0)
+//			begin
+//				$display("NO.: ", offset, ". Hit in Query: ", hit_add_inQ_out+(NUMBER_ARRAY-1-offset)*LENGTH, ". Hit in Subject: ",hit_add_inS_out, ". Length of Hit", hit_length_out + 1);
+//				//num_HSP_out = num_HSP_out + 1;
+//			end
 
 //always @(posedge array_clk) 	
 //		if (hits_vector_1!=0) _debug_ = hits_vector_1;
