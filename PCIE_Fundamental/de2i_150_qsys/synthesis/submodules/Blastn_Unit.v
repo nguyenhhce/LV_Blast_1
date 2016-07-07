@@ -80,7 +80,7 @@ Hit_Info_Extrac Hit_Info_Extrac_U(array_clk,offset,query_enable, sub_enable,hits
 Hit_To_FIFO Hit_To_FIFO(array_clk, hit_add_inQ, hit_add_inS, hit_length, enable_Hit_Extrac_1, hit_add_inQ_out,hit_add_inS_out, hit_length_out, reset);
 
 // Summary fifo which store all Hits
-Fifo_B fifo_Sum(array_clk, reset, hit_add_inS_out, hit_add_inQ_out+hit_add_inQ_out_add_num, hit_length_out, hit_add_inS_UnGap, hit_add_inQ_UnGap, hit_length_UnGap,
+Fifo fifo_Sum(array_clk, reset, hit_add_inS_out, hit_add_inQ_out+hit_add_inQ_out_add_num, hit_length_out, hit_add_inS_UnGap, hit_add_inQ_UnGap, hit_length_UnGap,
 			fifo_Sum_wr, read_HSP, fifo_Sum_empty, fifo_Sum_full, fifo_Sum_counter );
 
 //Fifo_B fifo_Sum(array_clk, reset, hit_add_inS_out, hit_add_inQ_out+(NUMBER_ARRAY-1-offset)*LENGTH, hit_length_out, hit_add_inS_UnGap, hit_add_inQ_UnGap, hit_length_UnGap,

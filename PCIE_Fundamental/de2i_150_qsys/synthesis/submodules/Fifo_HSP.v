@@ -1,4 +1,4 @@
-`define BUF_WIDTH 8    // BUF_SIZE = 16 -> BUF_WIDTH = 4, no. of bits to be used in pointer
+`define BUF_WIDTH 2    // BUF_SIZE = 16 -> BUF_WIDTH = 4, no. of bits to be used in pointer
 `define BUF_SIZE ( 1<<`BUF_WIDTH )
 `define LENGTH_COUNTER 8
 
