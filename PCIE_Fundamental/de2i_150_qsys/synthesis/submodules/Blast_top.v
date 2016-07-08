@@ -141,7 +141,7 @@ module Blast_top
 //   assign write_hit_score_done = ~|subject_data[3*MEMORY_DATAWIDTH +:3*MEMORY_DATAWIDTH];
    assign finished             = write_hit_score_done && (read_subject_total >= (subject_length+64) && read_subject_total>4'd8);
    //assign finished                      = ~|subject_data[0 +: 3*MEMORY_DATAWIDTH];
-	//assign memory_writedata = write_hit_score_header?{subject_ID, hit_score_length}:{hit_add_inQ_UnGap, hit_add_inS_UnGap, hit_length_UnGap, hit_add_score};
+	always @(posedge clk) memory_writedata = write_hit_score_header?{subject_ID, hit_score_length}:{hit_add_inQ_UnGap, hit_add_inS_UnGap, hit_length_UnGap, hit_add_score};
    always @(posedge clk)
    begin
       if(reset) state <= IDLE;
@@ -313,7 +313,6 @@ module Blast_top
 
 
     always @(posedge clk) begin
-		memory_writedata <= 1;
       if(reset | idle) begin 
          first_read_subject          <= 1'b1;
          read_subject_total          <= 0;
@@ -378,6 +377,7 @@ module Blast_top
          if(found_hit_score) begin
             hit_score_length         <= hit_score_length + 4'd8;
             //
+				//memory_writedata = {hit_add_inQ_UnGap, hit_add_inS_UnGap, hit_length_UnGap, hit_add_score};
          end
       end    
 		

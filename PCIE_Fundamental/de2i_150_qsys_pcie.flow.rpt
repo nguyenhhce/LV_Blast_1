@@ -1,5 +1,5 @@
 Flow report for de2i_150_qsys_pcie
-Fri Jul 08 22:30:26 2016
+Fri Jul 08 23:05:50 2016
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -41,26 +41,26 @@ agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Fri Jul 08 22:30:26 2016      ;
+; Flow Status                        ; Successful - Fri Jul 08 23:05:47 2016      ;
 ; Quartus II 64-Bit Version          ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                      ; de2i_150_qsys_pcie                         ;
 ; Top-level Entity Name              ; de2i_150_qsys_pcie                         ;
 ; Family                             ; Cyclone IV GX                              ;
 ; Device                             ; EP4CGX150DF31C7                            ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 48,874 / 149,760 ( 33 % )                  ;
-;     Total combinational functions  ; 45,621 / 149,760 ( 30 % )                  ;
-;     Dedicated logic registers      ; 24,095 / 149,760 ( 16 % )                  ;
-; Total registers                    ; 24095                                      ;
-; Total pins                         ; 467 / 508 ( 92 % )                         ;
+; Total logic elements               ; 56,069                                     ;
+;     Total combinational functions  ; 45,723                                     ;
+;     Dedicated logic registers      ; 24,163                                     ;
+; Total registers                    ; 24163                                      ;
+; Total pins                         ; 464                                        ;
 ; Total virtual pins                 ; 1                                          ;
-; Total memory bits                  ; 1,375,224 / 6,635,520 ( 21 % )             ;
-; Embedded Multiplier 9-bit elements ; 0 / 720 ( 0 % )                            ;
-; Total GXB Receiver Channel PCS     ; 1 / 8 ( 13 % )                             ;
-; Total GXB Receiver Channel PMA     ; 1 / 8 ( 13 % )                             ;
-; Total GXB Transmitter Channel PCS  ; 1 / 8 ( 13 % )                             ;
-; Total GXB Transmitter Channel PMA  ; 1 / 8 ( 13 % )                             ;
-; Total PLLs                         ; 1 / 8 ( 13 % )                             ;
+; Total memory bits                  ; 1,375,224                                  ;
+; Embedded Multiplier 9-bit elements ; 0                                          ;
+; Total GXB Receiver Channel PCS     ; 1                                          ;
+; Total GXB Receiver Channel PMA     ; 1                                          ;
+; Total GXB Transmitter Channel PCS  ; 1                                          ;
+; Total GXB Transmitter Channel PMA  ; 1                                          ;
+; Total PLLs                         ; 1                                          ;
 +------------------------------------+--------------------------------------------+
 
 
@@ -69,7 +69,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/08/2016 22:05:40 ;
+; Start date & time ; 07/08/2016 22:59:03 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; de2i_150_qsys_pcie  ;
 +-------------------+---------------------+
@@ -80,7 +80,7 @@ agreement for further details.
 +---------------------------------------------------+--------------------------------------------------------------------------------------+---------------+---------------+------------------+
 ; Assignment Name                                   ; Value                                                                                ; Default Value ; Entity Name   ; Section Id       ;
 +---------------------------------------------------+--------------------------------------------------------------------------------------+---------------+---------------+------------------+
-; COMPILER_SIGNATURE_ID                             ; 119236240293666.146799033906292                                                      ; --            ; --            ; --               ;
+; COMPILER_SIGNATURE_ID                             ; 119236240293666.146799354202104                                                      ; --            ; --            ; --               ;
 ; CYCLONEII_OPTIMIZATION_TECHNIQUE                  ; Speed                                                                                ; Balanced      ; --            ; --               ;
 ; EDA_DESIGN_INSTANCE_NAME                          ; NA                                                                                   ; --            ; --            ; memory_tb        ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH              ; memory_tb                                                                            ; --            ; --            ; eda_simulation   ;
@@ -144,41 +144,29 @@ agreement for further details.
 +---------------------------------------------------+--------------------------------------------------------------------------------------+---------------+---------------+------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                             ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:05:55     ; 1.0                     ; 1506 MB             ; 00:06:16                           ;
-; Fitter                    ; 00:14:27     ; 2.2                     ; 2437 MB             ; 00:28:59                           ;
-; Assembler                 ; 00:00:25     ; 1.0                     ; 809 MB              ; 00:00:25                           ;
-; TimeQuest Timing Analyzer ; 00:00:51     ; 1.9                     ; 1505 MB             ; 00:01:14                           ;
-; EDA Netlist Writer        ; 00:02:09     ; 1.0                     ; 1041 MB             ; 00:02:08                           ;
-; Total                     ; 00:23:47     ; --                      ; --                  ; 00:39:02                           ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:06:27     ; 1.0                     ; 1499 MB             ; 00:06:54                           ;
+; Total                ; 00:06:27     ; --                      ; --                  ; 00:06:54                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+----------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                        ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; Nguyen-PC        ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter                    ; Nguyen-PC        ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler                 ; Nguyen-PC        ; Windows 7 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; Nguyen-PC        ; Windows 7 ; 6.2        ; x86_64         ;
-; EDA Netlist Writer        ; Nguyen-PC        ; Windows 7 ; 6.2        ; x86_64         ;
-+---------------------------+------------------+-----------+------------+----------------+
++-----------------------------------------------------------------------------------+
+; Flow OS Summary                                                                   ;
++----------------------+------------------+-----------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++----------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis ; Nguyen-PC        ; Windows 7 ; 6.2        ; x86_64         ;
++----------------------+------------------+-----------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off de2i_150_qsys_pcie -c de2i_150_qsys_pcie
-quartus_fit --read_settings_files=off --write_settings_files=off de2i_150_qsys_pcie -c de2i_150_qsys_pcie
-quartus_asm --read_settings_files=off --write_settings_files=off de2i_150_qsys_pcie -c de2i_150_qsys_pcie
-quartus_sta de2i_150_qsys_pcie -c de2i_150_qsys_pcie
-quartus_eda --read_settings_files=off --write_settings_files=off de2i_150_qsys_pcie -c de2i_150_qsys_pcie
 
 
 
