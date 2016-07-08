@@ -60,7 +60,6 @@ Temporary Items
 *.jdi
 *.map
 *.pin
-*.qws
 *.sta
 *.qdf
 *.txt
@@ -83,9 +82,6 @@ Temporary Items
 *.hbdb
 *.hb_info
 *.sig
-*.rrp
-*.qws
-*.tdf
 *.qmsg
 *.rdb
 *.idb
@@ -96,16 +92,11 @@ Temporary Items
 *.ddb
 *.flock
 *.hsd
-*.ammdb
 *.cdb
 *.tdb
 *.hdb
 *.kpt
 *.hdb
-*.vho
-*.sdo
 *.hdb
-*.ammdb
-*.cdb
 *.hdb
 *.rcfdb

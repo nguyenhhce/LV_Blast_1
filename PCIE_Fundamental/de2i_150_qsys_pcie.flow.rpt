@@ -1,5 +1,5 @@
 Flow report for de2i_150_qsys_pcie
-Fri Jul 08 23:05:50 2016
+Fri Jul 08 23:20:28 2016
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -41,17 +41,17 @@ agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Fri Jul 08 23:05:47 2016      ;
+; Flow Status                        ; Successful - Fri Jul 08 23:20:26 2016      ;
 ; Quartus II 64-Bit Version          ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                      ; de2i_150_qsys_pcie                         ;
 ; Top-level Entity Name              ; de2i_150_qsys_pcie                         ;
 ; Family                             ; Cyclone IV GX                              ;
 ; Device                             ; EP4CGX150DF31C7                            ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 56,069                                     ;
-;     Total combinational functions  ; 45,723                                     ;
-;     Dedicated logic registers      ; 24,163                                     ;
-; Total registers                    ; 24163                                      ;
+; Total logic elements               ; 56,077                                     ;
+;     Total combinational functions  ; 45,728                                     ;
+;     Dedicated logic registers      ; 24,169                                     ;
+; Total registers                    ; 24169                                      ;
 ; Total pins                         ; 464                                        ;
 ; Total virtual pins                 ; 1                                          ;
 ; Total memory bits                  ; 1,375,224                                  ;
@@ -69,7 +69,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/08/2016 22:59:03 ;
+; Start date & time ; 07/08/2016 23:12:44 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; de2i_150_qsys_pcie  ;
 +-------------------+---------------------+
@@ -80,7 +80,7 @@ agreement for further details.
 +---------------------------------------------------+--------------------------------------------------------------------------------------+---------------+---------------+------------------+
 ; Assignment Name                                   ; Value                                                                                ; Default Value ; Entity Name   ; Section Id       ;
 +---------------------------------------------------+--------------------------------------------------------------------------------------+---------------+---------------+------------------+
-; COMPILER_SIGNATURE_ID                             ; 119236240293666.146799354202104                                                      ; --            ; --            ; --               ;
+; COMPILER_SIGNATURE_ID                             ; 119236240293666.146799436308064                                                      ; --            ; --            ; --               ;
 ; CYCLONEII_OPTIMIZATION_TECHNIQUE                  ; Speed                                                                                ; Balanced      ; --            ; --               ;
 ; EDA_DESIGN_INSTANCE_NAME                          ; NA                                                                                   ; --            ; --            ; memory_tb        ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH              ; memory_tb                                                                            ; --            ; --            ; eda_simulation   ;
@@ -149,8 +149,8 @@ agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:06:27     ; 1.0                     ; 1499 MB             ; 00:06:54                           ;
-; Total                ; 00:06:27     ; --                      ; --                  ; 00:06:54                           ;
+; Analysis & Synthesis ; 00:07:20     ; 1.0                     ; 1527 MB             ; 00:07:42                           ;
+; Total                ; 00:07:20     ; --                      ; --                  ; 00:07:42                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
