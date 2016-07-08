@@ -121,7 +121,8 @@ module Blast_top
 	 assign debug_status    = {idle,write_hit_score,read_subject,first_read_subject,state,finished, FIFO_empty, read_hit_score_pair, query_datastream_out, sub_datastream_out};
 	 //assign debug_status    = {idle,write_hit_score,read_subject,first_read_subject,state,finished, FIFO_empty, num_HSP_out, num_HSP_read, query_enable_debug, subject_enable_debug};
     assign memory_clken    = 1'b1;
-    assign found_hit_score = |{|hit_add_inQ_UnGap, |hit_add_inS_UnGap, |hit_length_UnGap, |hit_add_score}&&(!FIFO_empty);
+    //assign found_hit_score = |{|hit_add_inQ_UnGap, |hit_add_inS_UnGap, |hit_length_UnGap, |hit_add_score}&&(!FIFO_empty);
+	 assign found_hit_score = |{|hit_add_inQ_UnGap, |hit_add_inS_UnGap, |hit_length_UnGap, |hit_add_score};
     assign memory_address  = (read_query) ? query_address : 
                              (read_subject) ? subject_address :
                              (write_hit_score | write_hit_score_header) ? hit_score_address : 0 ;
@@ -140,6 +141,7 @@ module Blast_top
 //   assign write_hit_score_done = ~|subject_data[3*MEMORY_DATAWIDTH +:3*MEMORY_DATAWIDTH];
    assign finished             = write_hit_score_done && (read_subject_total >= (subject_length+64) && read_subject_total>4'd8);
    //assign finished                      = ~|subject_data[0 +: 3*MEMORY_DATAWIDTH];
+	//assign memory_writedata = write_hit_score_header?{subject_ID, hit_score_length}:{hit_add_inQ_UnGap, hit_add_inS_UnGap, hit_length_UnGap, hit_add_score};
    always @(posedge clk)
    begin
       if(reset) state <= IDLE;
@@ -311,6 +313,7 @@ module Blast_top
 
 
     always @(posedge clk) begin
+		memory_writedata <= 1;
       if(reset | idle) begin 
          first_read_subject          <= 1'b1;
          read_subject_total          <= 0;
@@ -374,14 +377,14 @@ module Blast_top
 			end
          if(found_hit_score) begin
             hit_score_length         <= hit_score_length + 4'd8;
-            memory_writedata         <= {hit_add_inQ_UnGap, hit_add_inS_UnGap, hit_length_UnGap, hit_add_score};
+            //
          end
       end    
 		
       else if(write_hit_score_header) begin
          write_hit_score_header_done <= 1'b1;
 			hit_score_address           <= MEM_HIT_SCORE_ADDR;
-         memory_writedata            <= {subject_ID, hit_score_length};
+         //memory_writedata            <= {subject_ID, hit_score_length};
          hit_score_length            <= 0;
          first_read_subject          <= 1'b1;
       end
