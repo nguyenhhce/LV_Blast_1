@@ -1,0 +1,238 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory="D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy" --output-directory="D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy\de2i_150_qsys" --report-file="bsf:D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy\de2i_150_qsys\de2i_150_qsys.bsf" --system-info=DEVICE_FAMILY="Cyclone IV GX" --system-info=DEVICE=EP4CGX150DF31C7 --system-info=DEVICE_SPEEDGRADE=7 --component-file="D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy\de2i_150_qsys.qsys" --remove-qsys-generate-warning
+Progress: Loading PCIE_Fundamental - Copy/de2i_150_qsys.qsys
+Progress: Reading input file
+Progress: Adding button [altera_avalon_pio 14.1]
+Progress: Parameterizing module button
+Progress: Adding clk_50 [clock_source 14.1]
+Progress: Parameterizing module clk_50
+Progress: Adding fifo_memory [altera_avalon_fifo 14.1]
+Progress: Parameterizing module fifo_memory
+Progress: Adding led [altera_avalon_pio 14.1]
+Progress: Parameterizing module led
+Progress: Adding nios2 [altera_nios2_gen2 14.1]
+Progress: Parameterizing module nios2
+Progress: Adding onchip_memory [altera_avalon_onchip_memory2 14.1]
+Progress: Parameterizing module onchip_memory
+Progress: Adding pcie_ip [altera_pcie_hard_ip 14.1]
+Progress: Parameterizing module pcie_ip
+Progress: Adding sgdma [altera_avalon_sgdma 14.1]
+Progress: Parameterizing module sgdma
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: de2i_150_qsys.button: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: de2i_150_qsys.fifo_memory: The Nios II HAL drivers for the Altera Avalon FIFO support only 32-bit data width.         If you connect this FIFO to a Nios II CPU, you will need to access the registers directly.
+Info: de2i_150_qsys.pcie_ip:  Rx Master BAR 1_0 mapped to 18 -bit Avalon-MM address
+Info: de2i_150_qsys.pcie_ip:  Rx Master BAR 2 mapped to 15 -bit Avalon-MM address
+Warning: de2i_150_qsys.pcie_ip.pcie_ip: Module dependency loop involving: "pcie_internal_hip" (altera_pcie_internal_hard_ip_qsys 14.1)
+Warning: de2i_150_qsys.pcie_ip.pcie_ip: Module dependency loop involving: "pcie_internal_hip" (altera_pcie_internal_hard_ip_qsys 14.1), "avalon_clk" (altera_clock_bridge 14.1)
+Info: de2i_150_qsys.pcie_ip.pcie_internal_hip:  Txs Address width is 31
+Info: de2i_150_qsys.pcie_ip.pcie_internal_hip: Application clock frequency is 125 Mhz 
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip.app_msi_ack: Interface has no signals
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip.app_msi_num: Interface has no signals
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip.app_msi_req: Interface has no signals
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip.test_out_export: Interface has no signals
+Info: de2i_150_qsys.pcie_ip.altgx_internal: Family: Cyclone IV GX
+Info: de2i_150_qsys.pcie_ip.altgx_internal: Lanes: 1
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.pcie_core_clk cannot be both connected and exported
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.app_msi_ack must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.rc_rx_analogreset must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.rc_rx_digitalreset must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.app_msi_num must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.app_msi_req must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.msi_interface_export must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.tx_deemph_0 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.tx_margin_0 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.test_out_export must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pipe_interface_internal: pipe_interface_internal.pll_powerdown_pcs must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pipe_interface_internal: pipe_interface_internal.rateswitch_pcs must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pipe_interface_internal: pipe_interface_internal.rateswitchbaseclock_pcs must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_2 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_3 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_4 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_5 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_6 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_7 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_8 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_9 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.reset_controller_internal: reset_controller_internal.reset_n_out cannot be both connected and exported
+Warning: de2i_150_qsys.pcie_ip: pcie_ip.powerdown must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip: Interrupt sender pcie_ip.cra_irq is not connected to an interrupt receiver
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory="D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy" --output-directory="D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy\de2i_150_qsys\synthesis" --file-set=QUARTUS_SYNTH --report-file="html:D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy\de2i_150_qsys\de2i_150_qsys.html" --report-file="sopcinfo:D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy\de2i_150_qsys.sopcinfo" --report-file="cmp:D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy\de2i_150_qsys\de2i_150_qsys.cmp" --report-file="qip:D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy\de2i_150_qsys\synthesis\de2i_150_qsys.qip" --report-file="svd:D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy\de2i_150_qsys\synthesis\de2i_150_qsys.svd" --report-file="regmap:D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy\de2i_150_qsys\synthesis\de2i_150_qsys.regmap" --report-file="xml:D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy\de2i_150_qsys\de2i_150_qsys.xml" --report-file="debuginfo:D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy\de2i_150_qsys\synthesis\de2i_150_qsys.debuginfo" --system-info=DEVICE_FAMILY="Cyclone IV GX" --system-info=DEVICE=EP4CGX150DF31C7 --system-info=DEVICE_SPEEDGRADE=7 --component-file="D:\03.software\Altera_DE2\DE2i-150_v.2.1.2_SystemCD\Demonstrations\FPGA\PCIE_Fundamental - Copy\de2i_150_qsys.qsys" --remove-qsys-generate-warning --language=VERILOG
+Progress: Loading PCIE_Fundamental - Copy/de2i_150_qsys.qsys
+Progress: Reading input file
+Progress: Adding button [altera_avalon_pio 14.1]
+Progress: Parameterizing module button
+Progress: Adding clk_50 [clock_source 14.1]
+Progress: Parameterizing module clk_50
+Progress: Adding fifo_memory [altera_avalon_fifo 14.1]
+Progress: Parameterizing module fifo_memory
+Progress: Adding led [altera_avalon_pio 14.1]
+Progress: Parameterizing module led
+Progress: Adding nios2 [altera_nios2_gen2 14.1]
+Progress: Parameterizing module nios2
+Progress: Adding onchip_memory [altera_avalon_onchip_memory2 14.1]
+Progress: Parameterizing module onchip_memory
+Progress: Adding pcie_ip [altera_pcie_hard_ip 14.1]
+Progress: Parameterizing module pcie_ip
+Progress: Adding sgdma [altera_avalon_sgdma 14.1]
+Progress: Parameterizing module sgdma
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: de2i_150_qsys.button: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: de2i_150_qsys.fifo_memory: The Nios II HAL drivers for the Altera Avalon FIFO support only 32-bit data width.         If you connect this FIFO to a Nios II CPU, you will need to access the registers directly.
+Info: de2i_150_qsys.pcie_ip:  Rx Master BAR 1_0 mapped to 18 -bit Avalon-MM address
+Info: de2i_150_qsys.pcie_ip:  Rx Master BAR 2 mapped to 15 -bit Avalon-MM address
+Warning: de2i_150_qsys.pcie_ip.pcie_ip: Module dependency loop involving: "pcie_internal_hip" (altera_pcie_internal_hard_ip_qsys 14.1)
+Warning: de2i_150_qsys.pcie_ip.pcie_ip: Module dependency loop involving: "pcie_internal_hip" (altera_pcie_internal_hard_ip_qsys 14.1), "avalon_clk" (altera_clock_bridge 14.1)
+Info: de2i_150_qsys.pcie_ip.pcie_internal_hip:  Txs Address width is 31
+Info: de2i_150_qsys.pcie_ip.pcie_internal_hip: Application clock frequency is 125 Mhz 
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip.app_msi_ack: Interface has no signals
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip.app_msi_num: Interface has no signals
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip.app_msi_req: Interface has no signals
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip.test_out_export: Interface has no signals
+Info: de2i_150_qsys.pcie_ip.altgx_internal: Family: Cyclone IV GX
+Info: de2i_150_qsys.pcie_ip.altgx_internal: Lanes: 1
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.pcie_core_clk cannot be both connected and exported
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.app_msi_ack must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.rc_rx_analogreset must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.rc_rx_digitalreset must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.app_msi_num must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.app_msi_req must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.msi_interface_export must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.tx_deemph_0 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.tx_margin_0 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pcie_internal_hip: pcie_internal_hip.test_out_export must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pipe_interface_internal: pipe_interface_internal.pll_powerdown_pcs must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pipe_interface_internal: pipe_interface_internal.rateswitch_pcs must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.pipe_interface_internal: pipe_interface_internal.rateswitchbaseclock_pcs must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_2 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_3 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_4 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_5 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_6 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_7 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_8 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.refclk_conduit: refclk_conduit.conduit_out_9 must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip.reset_controller_internal: reset_controller_internal.reset_n_out cannot be both connected and exported
+Warning: de2i_150_qsys.pcie_ip: pcie_ip.powerdown must be exported, or connected to a matching conduit.
+Warning: de2i_150_qsys.pcie_ip: Interrupt sender pcie_ip.cra_irq is not connected to an interrupt receiver
+Info: de2i_150_qsys: Generating de2i_150_qsys "de2i_150_qsys" for QUARTUS_SYNTH
+Info: button: Starting RTL generation for module 'de2i_150_qsys_button'
+Info: button:   Generation command is [exec C:/altera/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera/14.1/quartus/bin64/perl/lib -I C:/altera/14.1/quartus/sopc_builder/bin/europa -I C:/altera/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/14.1/quartus/sopc_builder/bin -I C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=de2i_150_qsys_button --dir=C:/Users/50700176/AppData/Local/Temp/alt6954_6991926946569169843.dir/0002_button_gen/ --quartus_dir=C:/altera/14.1/quartus --verilog --config=C:/Users/50700176/AppData/Local/Temp/alt6954_6991926946569169843.dir/0002_button_gen//de2i_150_qsys_button_component_configuration.pl  --do_build_sim=0  ]
+Info: button: Done RTL generation for module 'de2i_150_qsys_button'
+Info: button: "de2i_150_qsys" instantiated altera_avalon_pio "button"
+Info: fifo_memory: Starting RTL generation for module 'de2i_150_qsys_fifo_memory'
+Info: fifo_memory:   Generation command is [exec C:/altera/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera/14.1/quartus/bin64/perl/lib -I C:/altera/14.1/quartus/sopc_builder/bin/europa -I C:/altera/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/14.1/quartus/sopc_builder/bin -I C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo -- C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo/generate_rtl.pl --name=de2i_150_qsys_fifo_memory --dir=C:/Users/50700176/AppData/Local/Temp/alt6954_6991926946569169843.dir/0003_fifo_memory_gen/ --quartus_dir=C:/altera/14.1/quartus --verilog --config=C:/Users/50700176/AppData/Local/Temp/alt6954_6991926946569169843.dir/0003_fifo_memory_gen//de2i_150_qsys_fifo_memory_component_configuration.pl  --do_build_sim=0  ]
+Info: fifo_memory: Done RTL generation for module 'de2i_150_qsys_fifo_memory'
+Info: fifo_memory: "de2i_150_qsys" instantiated altera_avalon_fifo "fifo_memory"
+Info: led: Starting RTL generation for module 'de2i_150_qsys_led'
+Info: led:   Generation command is [exec C:/altera/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera/14.1/quartus/bin64/perl/lib -I C:/altera/14.1/quartus/sopc_builder/bin/europa -I C:/altera/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/14.1/quartus/sopc_builder/bin -I C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=de2i_150_qsys_led --dir=C:/Users/50700176/AppData/Local/Temp/alt6954_6991926946569169843.dir/0004_led_gen/ --quartus_dir=C:/altera/14.1/quartus --verilog --config=C:/Users/50700176/AppData/Local/Temp/alt6954_6991926946569169843.dir/0004_led_gen//de2i_150_qsys_led_component_configuration.pl  --do_build_sim=0  ]
+Info: led: Done RTL generation for module 'de2i_150_qsys_led'
+Info: led: "de2i_150_qsys" instantiated altera_avalon_pio "led"
+Info: nios2: "de2i_150_qsys" instantiated altera_nios2_gen2 "nios2"
+Info: onchip_memory: Starting RTL generation for module 'de2i_150_qsys_onchip_memory'
+Info: onchip_memory:   Generation command is [exec C:/altera/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera/14.1/quartus/bin64/perl/lib -I C:/altera/14.1/quartus/sopc_builder/bin/europa -I C:/altera/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/14.1/quartus/sopc_builder/bin -I C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=de2i_150_qsys_onchip_memory --dir=C:/Users/50700176/AppData/Local/Temp/alt6954_6991926946569169843.dir/0005_onchip_memory_gen/ --quartus_dir=C:/altera/14.1/quartus --verilog --config=C:/Users/50700176/AppData/Local/Temp/alt6954_6991926946569169843.dir/0005_onchip_memory_gen//de2i_150_qsys_onchip_memory_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_memory: Done RTL generation for module 'de2i_150_qsys_onchip_memory'
+Info: onchip_memory: "de2i_150_qsys" instantiated altera_avalon_onchip_memory2 "onchip_memory"
+Info: pcie_ip: "de2i_150_qsys" instantiated altera_pcie_hard_ip "pcie_ip"
+Info: sgdma: Starting RTL generation for module 'de2i_150_qsys_sgdma'
+Info: sgdma:   Generation command is [exec C:/altera/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera/14.1/quartus/bin64/perl/lib -I C:/altera/14.1/quartus/sopc_builder/bin/europa -I C:/altera/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/14.1/quartus/sopc_builder/bin -I C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_sgdma -- C:/altera/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_sgdma/generate_rtl.pl --name=de2i_150_qsys_sgdma --dir=C:/Users/50700176/AppData/Local/Temp/alt6954_6991926946569169843.dir/0006_sgdma_gen/ --quartus_dir=C:/altera/14.1/quartus --verilog --config=C:/Users/50700176/AppData/Local/Temp/alt6954_6991926946569169843.dir/0006_sgdma_gen//de2i_150_qsys_sgdma_component_configuration.pl  --do_build_sim=0  ]
+Info: sgdma: Done RTL generation for module 'de2i_150_qsys_sgdma'
+Info: sgdma: "de2i_150_qsys" instantiated altera_avalon_sgdma "sgdma"
+Info: mm_interconnect_0: "de2i_150_qsys" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: mm_interconnect_1: "de2i_150_qsys" instantiated altera_mm_interconnect "mm_interconnect_1"
+Info: mm_interconnect_2: "de2i_150_qsys" instantiated altera_mm_interconnect "mm_interconnect_2"
+Info: irq_mapper: "de2i_150_qsys" instantiated altera_irq_mapper "irq_mapper"
+Info: irq_mapper_001: "de2i_150_qsys" instantiated altera_irq_mapper "irq_mapper_001"
+Info: rst_controller: "de2i_150_qsys" instantiated altera_reset_controller "rst_controller"
+Info: cpu: Starting RTL generation for module 'de2i_150_qsys_nios2_cpu'
+Info: cpu:   Generation command is [exec C:/altera/14.1/quartus/bin64/eperlcmd.exe -I C:/altera/14.1/quartus/bin64/perl/lib -I C:/altera/14.1/quartus/sopc_builder/bin/europa -I C:/altera/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/14.1/quartus/sopc_builder/bin -I C:/altera/14.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I C:/altera/14.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I C:/altera/14.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I C:/altera/14.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- C:/altera/14.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=de2i_150_qsys_nios2_cpu --dir=C:/Users/50700176/AppData/Local/Temp/alt6954_6991926946569169843.dir/0010_cpu_gen/ --quartus_bindir=C:/altera/14.1/quartus/bin64 --verilog --config=C:/Users/50700176/AppData/Local/Temp/alt6954_6991926946569169843.dir/0010_cpu_gen//de2i_150_qsys_nios2_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2016.06.02 13:56:36 (*) Starting Nios II generation
+Info: cpu: # 2016.06.02 13:56:36 (*)   Checking for plaintext license.
+Info: cpu: # 2016.06.02 13:56:39 (*)   Couldn't query license setup in Quartus directory C:/altera/14.1/quartus/bin64
+Info: cpu: # 2016.06.02 13:56:39 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2016.06.02 13:56:39 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2016.06.02 13:56:39 (*)   Plaintext license not found.
+Info: cpu: # 2016.06.02 13:56:39 (*)   No license required to generate encrypted Nios II/e.
+Info: cpu: # 2016.06.02 13:56:39 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2016.06.02 13:56:39 (*)   Creating all objects for CPU
+Info: cpu: # 2016.06.02 13:56:40 (*)   Generating RTL from CPU objects
+Info: cpu: # 2016.06.02 13:56:40 (*)   Creating plain-text RTL
+Info: cpu: # 2016.06.02 13:56:42 (*) Done Nios II generation
+Info: cpu: Done RTL generation for module 'de2i_150_qsys_nios2_cpu'
+Info: cpu: "nios2" instantiated altera_nios2_gen2_unit "cpu"
+Info: pcie_internal_hip: "pcie_ip" instantiated altera_pcie_internal_hard_ip_qsys "pcie_internal_hip"
+Info: altgx_internal: Family: Cyclone IV GX
+Info: altgx_internal: Subprotocol: Gen 1-x1
+Info: altgx_internal: qmegawiz -silent module=alt_c3gxb LOCKDOWN_EXCL=PCIE IP_MODE=PCIE_HIP_8 gxb_analog_power=AUTO tx_analog_power=AUTO elec_idle_infer_enable=false tx_allow_polarity_inversion=false rx_cdrctrl_enable=true hip_tx_clkout rx_elecidleinfersel fixedclk enable_0ppm=false pll_powerdown intended_device_family=cycloneiv starting_channel_number=84   deviceFamily="Cyclone IV GX"  wiz_subprotocol="Gen 1-x1"  OPTIONAL_FILES=NONE de2i_150_qsys_pcie_ip_altgx_internal.v
+Info: altgx_internal: "pcie_ip" instantiated altera_pcie_internal_altgx "altgx_internal"
+Info: reset_controller_internal: "pcie_ip" instantiated altera_pcie_internal_reset_controller_qsys "reset_controller_internal"
+Info: pipe_interface_internal: "pcie_ip" instantiated altera_pcie_internal_pipe_interface_qsys "pipe_interface_internal"
+Info: pcie_ip_bar1_0_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "pcie_ip_bar1_0_translator"
+Info: fifo_memory_in_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "fifo_memory_in_translator"
+Info: pcie_ip_bar1_0_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "pcie_ip_bar1_0_agent"
+Info: fifo_memory_in_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "fifo_memory_in_agent"
+Info: fifo_memory_in_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "fifo_memory_in_agent_rsp_fifo"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: router_004: "mm_interconnect_0" instantiated altera_merlin_router "router_004"
+Info: router_005: "mm_interconnect_0" instantiated altera_merlin_router "router_005"
+Info: router_006: "mm_interconnect_0" instantiated altera_merlin_router "router_006"
+Info: router_007: "mm_interconnect_0" instantiated altera_merlin_router "router_007"
+Info: router_008: "mm_interconnect_0" instantiated altera_merlin_router "router_008"
+Info: router_011: "mm_interconnect_0" instantiated altera_merlin_router "router_011"
+Info: pcie_ip_bar1_0_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "pcie_ip_bar1_0_limiter"
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: fifo_memory_in_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "fifo_memory_in_burst_adapter"
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+Info: cmd_demux_002: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_002"
+Info: cmd_demux_004: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_004"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: cmd_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_001"
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: cmd_mux_003: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_003"
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: cmd_mux_006: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_006"
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_demux_006: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_006"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_002: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_002"
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: pcie_ip_bar1_0_to_fifo_memory_in_csr_cmd_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "pcie_ip_bar1_0_to_fifo_memory_in_csr_cmd_width_adapter"
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: router: "mm_interconnect_1" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_1" instantiated altera_merlin_router "router_001"
+Info: cmd_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: router: "mm_interconnect_2" instantiated altera_merlin_router "router"
+Info: router_002: "mm_interconnect_2" instantiated altera_merlin_router "router_002"
+Info: router_003: "mm_interconnect_2" instantiated altera_merlin_router "router_003"
+Info: cmd_demux: "mm_interconnect_2" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_mux: "mm_interconnect_2" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux: "mm_interconnect_2" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file D:/03.software/Altera_DE2/DE2i-150_v.2.1.2_SystemCD/Demonstrations/FPGA/PCIE_Fundamental - Copy/de2i_150_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: de2i_150_qsys: Done "de2i_150_qsys" with 61 modules, 110 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
