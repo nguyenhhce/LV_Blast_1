@@ -47,12 +47,9 @@ Temporary Items
 .apdisk
 
 //Binh added to filter unnecessary files
-*.bsf
-*.cmp
 *.html
 *.sopcinfo
 *.asm
-*.rpt
 *.cdf
 *.done
 *.eda
@@ -73,7 +70,6 @@ Temporary Items
 *.sld_design_entry
 *.sci
 *.debuginfo
-*.regmap
 *.autoh_e40e1
 *.ammdb
 *.cdb
@@ -89,6 +85,7 @@ Temporary Items
 *.sig
 *.rrp
 *.qws
+*.rpt
 *.tdf
 *.qmsg
 *.rdb
@@ -103,13 +100,7 @@ Temporary Items
 *.ammdb
 *.cdb
 *.tdb
-*.qip
-*.cdb
-*.cdb
-*.cdb
 *.hdb
-*.cdb
-*.cdb
 *.kpt
 *.hdb
 *.vho
@@ -119,5 +110,3 @@ Temporary Items
 *.cdb
 *.hdb
 *.rcfdb
-*.cdb
-*.sv
