@@ -135,13 +135,13 @@ module Blast_top
      assign memory_clken      = 1'b1;
      assign memory_chipselect = 1'b1;
      assign memory_byteenable = 8'HFF;
-     assign memory_write      = (write_hit_score || write_hit_score_header) && found_hit_score;
+     assign memory_write      = (write_hit_score && found_hit_score)|| write_hit_score_header;
 ///   reg first_write_hit_score;
 //changing state of write_hit_score to read_subject after 64 clock
 //   assign write_hit_score_done = ~|subject_data[3*MEMORY_DATAWIDTH +:3*MEMORY_DATAWIDTH];
    assign finished             = write_hit_score_done && (read_subject_total >= (subject_length+64) && read_subject_total>4'd8);
    //assign finished                      = ~|subject_data[0 +: 3*MEMORY_DATAWIDTH];
-	always @(posedge clk) memory_writedata = write_hit_score_header?{subject_ID, hit_score_length}:{hit_add_inQ_UnGap, hit_add_inS_UnGap, hit_length_UnGap, hit_add_score};
+//	always @(posedge clk) memory_writedata = write_hit_score_header?{subject_ID, hit_score_length}:{hit_add_inQ_UnGap, hit_add_inS_UnGap, hit_length_UnGap, hit_add_score};
    always @(posedge clk)
    begin
       if(reset) state <= IDLE;
@@ -323,6 +323,7 @@ module Blast_top
          read_subject_done           <= 1'b0;
          read_subject_count          <= 3'b0;
 			write_hit_score_done        <= 1'b0;
+			hit_score_length            <= 0;
          query_address               <= MEM_QUERY_ADDR;
          subject_address             <= MEM_SUBJECT_ADDR ;
          hit_score_address           <= MEM_HIT_SCORE_ADDR;			
@@ -363,7 +364,15 @@ module Blast_top
       else if(write_hit_score) begin
 		   read_subject_count           <= 3'b0;
          read_subject_done            <= 1'b0;
-			hit_score_address            <= hit_score_address + 1'b1;
+			if(memory_write) begin
+				if(hit_score_address == -14'h1) begin
+			      hit_score_address         <= MEM_HIT_SCORE_ADDR + 1'b1;
+			   end
+				else begin
+			      hit_score_address         <= hit_score_address + 1'b1;
+				end
+			end
+			
 			if(write_hit_score_count  == 8'd64) begin
 			   write_hit_score_count        <= 0;
 				write_hit_score_done         <= 1'b1;
@@ -372,21 +381,17 @@ module Blast_top
 			   write_hit_score_count        <= write_hit_score_count + 1;
 				write_hit_score_done         <= 1'b0;
 			end
-			if(hit_score_address == -14'h1) begin
-			   hit_score_address         <= MEM_HIT_SCORE_ADDR + 1'b1;
-			end
+
          if(found_hit_score) begin
-            hit_score_length         <= hit_score_length + 4'd8;
-            //
-				//memory_writedata = {hit_add_inQ_UnGap, hit_add_inS_UnGap, hit_length_UnGap, hit_add_score};
+            hit_score_length         <= hit_score_length + 1'b1;
+				memory_writedata <= {hit_add_inQ_UnGap, hit_add_inS_UnGap, hit_length_UnGap, hit_add_score};
          end
       end    
 		
       else if(write_hit_score_header) begin
          write_hit_score_header_done <= 1'b1;
 			hit_score_address           <= MEM_HIT_SCORE_ADDR;
-         //memory_writedata            <= {subject_ID, hit_score_length};
-         hit_score_length            <= 0;
+         memory_writedata            <= {subject_ID, hit_score_length[0+:8],hit_score_length[8+:8],hit_score_length[16+:8], hit_score_length[24+:8] };
          first_read_subject          <= 1'b1;
       end
    end
