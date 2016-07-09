@@ -47,7 +47,6 @@ Temporary Items
 .apdisk
 
 //Binh added to filter unnecessary files
-*.html
 *.sopcinfo
 *.asm
 *.cdf
@@ -63,12 +62,10 @@ Temporary Items
 *.sta
 *.qdf
 *.txt
-*.xml
 *.nlv
 *.db_info
 *.sld_design_entry
 *.sci
-*.debuginfo
 *.autoh_e40e1
 *.ammdb
 *.cdb

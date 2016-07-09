@@ -1,5 +1,5 @@
 Flow report for de2i_150_qsys_pcie
-Fri Jul 08 23:20:28 2016
+Sat Jul 09 09:20:35 2016
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -41,20 +41,20 @@ agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Fri Jul 08 23:20:26 2016      ;
+; Flow Status                        ; Successful - Sat Jul 09 09:20:33 2016      ;
 ; Quartus II 64-Bit Version          ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                      ; de2i_150_qsys_pcie                         ;
 ; Top-level Entity Name              ; de2i_150_qsys_pcie                         ;
 ; Family                             ; Cyclone IV GX                              ;
 ; Device                             ; EP4CGX150DF31C7                            ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 56,077                                     ;
-;     Total combinational functions  ; 45,728                                     ;
-;     Dedicated logic registers      ; 24,169                                     ;
-; Total registers                    ; 24169                                      ;
+; Total logic elements               ; 56,275                                     ;
+;     Total combinational functions  ; 45,766                                     ;
+;     Dedicated logic registers      ; 24,362                                     ;
+; Total registers                    ; 24362                                      ;
 ; Total pins                         ; 464                                        ;
 ; Total virtual pins                 ; 1                                          ;
-; Total memory bits                  ; 1,375,224                                  ;
+; Total memory bits                  ; 1,391,608                                  ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
 ; Total GXB Receiver Channel PCS     ; 1                                          ;
 ; Total GXB Receiver Channel PMA     ; 1                                          ;
@@ -69,7 +69,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/08/2016 23:12:44 ;
+; Start date & time ; 07/09/2016 09:13:13 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; de2i_150_qsys_pcie  ;
 +-------------------+---------------------+
@@ -80,7 +80,7 @@ agreement for further details.
 +---------------------------------------------------+--------------------------------------------------------------------------------------+---------------+---------------+------------------+
 ; Assignment Name                                   ; Value                                                                                ; Default Value ; Entity Name   ; Section Id       ;
 +---------------------------------------------------+--------------------------------------------------------------------------------------+---------------+---------------+------------------+
-; COMPILER_SIGNATURE_ID                             ; 119236240293666.146799436308064                                                      ; --            ; --            ; --               ;
+; COMPILER_SIGNATURE_ID                             ; 119236240293666.146803039208900                                                      ; --            ; --            ; --               ;
 ; CYCLONEII_OPTIMIZATION_TECHNIQUE                  ; Speed                                                                                ; Balanced      ; --            ; --               ;
 ; EDA_DESIGN_INSTANCE_NAME                          ; NA                                                                                   ; --            ; --            ; memory_tb        ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH              ; memory_tb                                                                            ; --            ; --            ; eda_simulation   ;
@@ -136,8 +136,8 @@ agreement for further details.
 ; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_INVERSION_MASK_LENGTH=23                                                         ; --            ; --            ; auto_signaltap_0 ;
 ; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_SEGMENT_SIZE=512                                                                 ; --            ; --            ; auto_signaltap_0 ;
 ; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_SAMPLE_DEPTH=512                                                                 ; --            ; --            ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_STORAGE_QUALIFIER_BITS=482                                                       ; --            ; --            ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_DATA_BITS=254                                                                    ; --            ; --            ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_DATA_BITS=286                                                                    ; --            ; --            ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_STORAGE_QUALIFIER_BITS=514                                                       ; --            ; --            ; auto_signaltap_0 ;
 ; SOPCINFO_FILE                                     ; de2i_150_qsys/synthesis/../../de2i_150_qsys.sopcinfo                                 ; --            ; --            ; --               ;
 ; SYNTHESIS_ONLY_QIP                                ; On                                                                                   ; --            ; --            ; --               ;
 ; USE_SIGNALTAP_FILE                                ; stp3.stp                                                                             ; --            ; --            ; --               ;
@@ -149,8 +149,8 @@ agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:07:20     ; 1.0                     ; 1527 MB             ; 00:07:42                           ;
-; Total                ; 00:07:20     ; --                      ; --                  ; 00:07:42                           ;
+; Analysis & Synthesis ; 00:07:02     ; 1.0                     ; 1511 MB             ; 00:07:25                           ;
+; Total                ; 00:07:02     ; --                      ; --                  ; 00:07:25                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

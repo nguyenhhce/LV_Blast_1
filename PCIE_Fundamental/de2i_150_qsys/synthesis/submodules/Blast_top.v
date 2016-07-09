@@ -262,7 +262,8 @@ module Blast_top
 		  if(read_subject) begin
 			 if(first_read_subject) begin
 				if(read_subject_count == 1) begin
-					{subject_ID, subject_length}                        <= memory_readdata;
+					{subject_ID, subject_length[0 +:8],subject_length[8 +:8],subject_length[16 +:8],subject_length[24 +:8]} 
+                                                                       <= memory_readdata;
 				end
 					else if(read_subject_count > 1)begin
 						subject_data[5*MEMORY_DATAWIDTH +: MEMORY_DATAWIDTH] <= memory_readdata;
