@@ -1,5 +1,5 @@
 Flow report for de2i_150_qsys_pcie
-Mon Jul 11 10:02:30 2016
+Mon Jul 11 10:56:04 2016
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -41,20 +41,20 @@ agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Mon Jul 11 10:02:30 2016      ;
+; Flow Status                        ; Successful - Mon Jul 11 10:56:04 2016      ;
 ; Quartus II 64-Bit Version          ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                      ; de2i_150_qsys_pcie                         ;
 ; Top-level Entity Name              ; de2i_150_qsys_pcie                         ;
 ; Family                             ; Cyclone IV GX                              ;
 ; Device                             ; EP4CGX150DF31C7                            ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 49,113 / 149,760 ( 33 % )                  ;
-;     Total combinational functions  ; 45,755 / 149,760 ( 31 % )                  ;
-;     Dedicated logic registers      ; 24,283 / 149,760 ( 16 % )                  ;
-; Total registers                    ; 24283                                      ;
+; Total logic elements               ; 49,125 / 149,760 ( 33 % )                  ;
+;     Total combinational functions  ; 45,662 / 149,760 ( 30 % )                  ;
+;     Dedicated logic registers      ; 24,316 / 149,760 ( 16 % )                  ;
+; Total registers                    ; 24316                                      ;
 ; Total pins                         ; 467 / 508 ( 92 % )                         ;
 ; Total virtual pins                 ; 1                                          ;
-; Total memory bits                  ; 1,383,928 / 6,635,520 ( 21 % )             ;
+; Total memory bits                  ; 1,387,512 / 6,635,520 ( 21 % )             ;
 ; Embedded Multiplier 9-bit elements ; 0 / 720 ( 0 % )                            ;
 ; Total GXB Receiver Channel PCS     ; 1 / 8 ( 13 % )                             ;
 ; Total GXB Receiver Channel PMA     ; 1 / 8 ( 13 % )                             ;
@@ -69,7 +69,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/11/2016 09:37:58 ;
+; Start date & time ; 07/11/2016 10:27:13 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; de2i_150_qsys_pcie  ;
 +-------------------+---------------------+
@@ -80,7 +80,7 @@ agreement for further details.
 +---------------------------------------------------+--------------------------------------------------------------------------------------+---------------+---------------+------------------+
 ; Assignment Name                                   ; Value                                                                                ; Default Value ; Entity Name   ; Section Id       ;
 +---------------------------------------------------+--------------------------------------------------------------------------------------+---------------+---------------+------------------+
-; COMPILER_SIGNATURE_ID                             ; 119236240293666.146820467705964                                                      ; --            ; --            ; --               ;
+; COMPILER_SIGNATURE_ID                             ; 119236240293666.146820763208112                                                      ; --            ; --            ; --               ;
 ; CYCLONEII_OPTIMIZATION_TECHNIQUE                  ; Speed                                                                                ; Balanced      ; --            ; --               ;
 ; EDA_DESIGN_INSTANCE_NAME                          ; NA                                                                                   ; --            ; --            ; memory_tb        ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH              ; memory_tb                                                                            ; --            ; --            ; eda_simulation   ;
@@ -149,12 +149,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:06:26     ; 1.0                     ; 1504 MB             ; 00:06:34                           ;
-; Fitter                    ; 00:13:34     ; 2.1                     ; 2416 MB             ; 00:25:41                           ;
-; Assembler                 ; 00:00:25     ; 1.0                     ; 813 MB              ; 00:00:24                           ;
-; TimeQuest Timing Analyzer ; 00:00:50     ; 1.7                     ; 1515 MB             ; 00:01:11                           ;
-; EDA Netlist Writer        ; 00:02:19     ; 1.0                     ; 1039 MB             ; 00:02:19                           ;
-; Total                     ; 00:23:34     ; --                      ; --                  ; 00:36:09                           ;
+; Analysis & Synthesis      ; 00:08:03     ; 1.0                     ; 1511 MB             ; 00:08:27                           ;
+; Fitter                    ; 00:15:52     ; 2.1                     ; 2537 MB             ; 00:30:40                           ;
+; Assembler                 ; 00:00:27     ; 1.0                     ; 815 MB              ; 00:00:27                           ;
+; TimeQuest Timing Analyzer ; 00:00:59     ; 1.6                     ; 1513 MB             ; 00:01:22                           ;
+; EDA Netlist Writer        ; 00:02:19     ; 1.0                     ; 1037 MB             ; 00:02:19                           ;
+; Total                     ; 00:27:40     ; --                      ; --                  ; 00:43:15                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
