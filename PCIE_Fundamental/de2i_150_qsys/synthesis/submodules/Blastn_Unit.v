@@ -90,12 +90,12 @@ Fifo fifo_Sum(array_clk, reset, hit_add_inS_out, hit_add_inQ_out+hit_add_inQ_out
 //Ungapped_Extension UnGap(array_clk,reset, read_HSP, Q_address_F, S_address_F, Q_context_F, S_context_F,
 //								Q_address_R, S_address_R, Q_context_R, S_context_R,
 //								hit_add_inQ_HSP,hit_add_inS_HSP, hit_length_HSP, hit_add_inQ_UnGap,hit_add_inS_UnGap, hit_length_UnGap,hit_add_score);
-//always @(posedge array_clk) 
-//		if (hit_length_out!=0)
-//			begin
-//				$display("NO.: ", offset, ". Hit in Query: ", hit_add_inQ_out+(NUMBER_ARRAY-1-offset)*LENGTH, ". Hit in Subject: ",hit_add_inS_out, ". Length of Hit", hit_length_out + 1);
-//				//num_HSP_out = num_HSP_out + 1;
-//			end
+always @(posedge array_clk) 
+		if (hit_length_out!=0)
+			begin
+				$display("NO.: ", offset, ". Hit in Query: ", hit_add_inQ_out+(NUMBER_ARRAY-1-offset)*LENGTH, ". Hit in Subject: ",hit_add_inS_out, ". Length of Hit", hit_length_out + 1);
+				//num_HSP_out = num_HSP_out + 1;
+			end
 
 //always @(posedge array_clk) 	
 //		if (hits_vector_1!=0) _debug_ = hits_vector_1;

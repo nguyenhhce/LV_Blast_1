@@ -51,15 +51,16 @@ wire  FIFO_empty;
 integer i,j;
 
 // Variable of query and subject
-	wire [8*LENGTH_ADN-1:0] stringvar_q, stringvar_s;
+	wire [8*LENGTH_ADN-1:0] stringvar_q;
+	wire [8*LENGTH_ADN-1:0] stringvar_s;
 	assign stringvar_q = "ATAAGTGCTTTTAAAAACTGAACCAAATCAATAGGCAATTGTAACAAAGTGCTTTTATCTGCATAAGTGCTTAAAAACTGAACCAAATCTGCAAAAGTGCTTTTAACAAAGTGCTTTTATCTGCAGTA";
-	assign stringvar_s = "GGATACCGTAGACGAGGAGGAAGATCCGGGGGCAGCTGCTCCATTATTACCAAAAACTGAACCAAATTAATAGGCAATTGAACTGAACCAAATTAATAGGCAATTGAACTGAACCAAATTAATAAGTA";
+	assign stringvar_s = "GGATACCGTAGACGAGGAGGAAGATCCGGGGGCAGCTGCTCCATTATTACCAAAAACTGAACCAAATTAATAGGCAATTGAACTGAACCAAATTAATAGGCAATTGAACTGAACCAAATTAATAAGTAGGATACCGTAGACGAGGAGGAAGATCCGGGGGCAGCTGCTCCATTATTACCAAAAACTGAACCAAATTAATAGGCAATTGAACTGAACCAAATTAATAGGCAATTGAACTGAACCAAATTAATAAGTA";
 	
-	Blastn_Array Blast_A(array_clk, query_enable, sub_enable, enable, reset, read_HSP,
+	Blastn_Array Blast_A(array_clk, query_enable, sub_enable, reset, read_HSP,
 						Q_address_F, S_address_F, Q_context_F, S_context_F,
 						Q_address_R, S_address_R, Q_context_R, S_context_R,
 						query_datastream_in, sub_datastream_in, query_datastream_out, sub_datastream_out,
-						hit_add_inQ_UnGap, hit_add_inS_UnGap, hit_length_UnGap, hit_add_score,FIFO_empty, _debug_);
+						hit_add_inQ_UnGap, hit_add_inS_UnGap, hit_length_UnGap, hit_add_score,FIFO_empty);
 						
 						
 	always #50 array_clk =~array_clk ;
