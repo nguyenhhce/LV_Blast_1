@@ -168,13 +168,13 @@ begin
 				end
 				
 				if (state == 1)
-					if ((hit_add_inQ_temp + hit_length_temp == (LENGTH_ADN-1)) || (hit_add_inS_temp + hit_length_temp == (LENGTH_ADN-1)))
+					if ((hit_add_inQ_temp + hit_length_temp == (LENGTH_ADN-1)) )//|| (hit_add_inS_temp + hit_length_temp == (LENGTH_ADN-1)))
 					begin
 						flag_end_R = 1;
 						Q_address_R = hit_add_inQ_temp + hit_length_temp;
 						S_address_R = hit_add_inS_temp + hit_length_temp;
 					end
-					else if (hit_add_inQ_temp + hit_length_temp == (LENGTH_ADN-2) || (hit_add_inS_temp + hit_length_temp == (LENGTH_ADN-2)))
+					else if (hit_add_inQ_temp + hit_length_temp == (LENGTH_ADN-2) )//|| (hit_add_inS_temp + hit_length_temp == (LENGTH_ADN-2)))
 					begin 
 						score = score-MISMATCH;
 						flag_end_R = 1;
@@ -319,7 +319,7 @@ begin
 						
 				end
 		
-				if ((Q_address_R == (LENGTH_ADN-1)) || (S_address_R == (LENGTH_ADN-1)))
+				if ((Q_address_R == (LENGTH_ADN-1))) //|| (S_address_R == (LENGTH_ADN-1)))
 					begin		
 						flag_end_R = 1;
 						//state = 3;

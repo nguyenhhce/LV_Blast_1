@@ -349,16 +349,19 @@ module Blast_top
 				 else if(read_subject_count == 3'd7)
 				 begin
 				    first_read_subject   <= 1'b0;
+					 //read_subject_count   <= read_subject_count - 1'b1;
+					 subject_address      = subject_address - 2'd1;
 				 end
          end
          else begin
-            if(read_subject_count == 3'd3) begin
+            if(read_subject_count == 3'd2) begin
                read_subject_done     <= 1'b1;
+					subject_address      = subject_address - 2'd1;
             end
          end
          read_subject_total          <= read_subject_total + 4'd8;
          read_subject_count          <= read_subject_count + 1'b1;
-		   subject_address             <= subject_address + 1'b1;
+		   subject_address             = subject_address + 1'b1;
       end
 		
       else if(write_hit_score) begin
@@ -373,7 +376,7 @@ module Blast_top
 				end
 			end
 			
-			if(write_hit_score_count  == 8'd64) begin
+			if(write_hit_score_count  == 8'd128) begin
 			   write_hit_score_count        <= 0;
 				write_hit_score_done         <= 1'b1;
 			end
