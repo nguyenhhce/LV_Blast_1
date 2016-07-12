@@ -139,7 +139,7 @@ module Blast_top
 ///   reg first_write_hit_score;
 //changing state of write_hit_score to read_subject after 64 clock
 //   assign write_hit_score_done = ~|subject_data[3*MEMORY_DATAWIDTH +:3*MEMORY_DATAWIDTH];
-   assign finished             = write_hit_score_done && (read_subject_total >= (subject_length+64) && read_subject_total>4'd8);
+   assign finished             = write_hit_score_done && (read_subject_total >= (subject_length+128) && read_subject_total>4'd8);
    //assign finished                      = ~|subject_data[0 +: 3*MEMORY_DATAWIDTH];
 //	always @(posedge clk) memory_writedata = write_hit_score_header?{subject_ID, hit_score_length}:{hit_add_inQ_UnGap, hit_add_inS_UnGap, hit_length_UnGap, hit_add_score};
    always @(posedge clk)
@@ -376,7 +376,7 @@ module Blast_top
 				end
 			end
 			
-			if(write_hit_score_count  == 8'd128) begin
+			if(write_hit_score_count  == 8'd64) begin
 			   write_hit_score_count        <= 0;
 				write_hit_score_done         <= 1'b1;
 			end
